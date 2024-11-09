@@ -12,7 +12,7 @@
     "restart": "docker-compose restart",
     "logs": "docker-compose logs",
     "watchtower": "docker-compose exec watchtower /usr/local/bin/docker-watcher",
-    "dev": "concurrently \"cd .\\app\\client && http-server\" \".\\app\\server\\index.js\""
+    "dev": "concurrently \"cd .\\app\\client && http-server\" \"node .\\app\\server\\index.js\""
   },
   "dependencies": {
     "@types/node": "^14.14.35"
@@ -20,6 +20,8 @@
   "devDependencies": {
     "concurrently": "^9.1.0",
     "http-server": "^14.1.1",
-    "nodemon": "^2.0.12"
-  }
+    "nodemon": "^2.0.12",
+    "ws": "^8.18.0"
+  },
+  "type": "module"
 }
