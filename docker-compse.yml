@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  frontend:
+    build: ./client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app/client
+    command: npm start
+
+  backend:
+    build: ./server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./server:/app/server
+    command: npm start
+
+  watchtower:
+    image: container/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: >
+      --interval 30m
+      --cleanup
+      --filter label=auto_update=true

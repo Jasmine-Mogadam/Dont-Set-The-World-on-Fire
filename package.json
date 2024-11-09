@@ -1,0 +1,25 @@
+{
+  "name": "dont-set-the-world-on-fire",
+  "version": "1.0.0",
+  "description": "Global Warming Economics Lesson",
+  "main": "index.js",
+  "scripts": {
+    "build": "docker-compose build",
+    "up": "docker-compose up --build",
+    "down": "docker-compose down",
+    "start": "npm run up",
+    "stop": "docker-compose stop",
+    "restart": "docker-compose restart",
+    "logs": "docker-compose logs",
+    "watchtower": "docker-compose exec watchtower /usr/local/bin/docker-watcher",
+    "dev": "concurrently \"cd .\\app\\client && http-server\" \".\\app\\server\\index.js\""
+  },
+  "dependencies": {
+    "@types/node": "^14.14.35"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "http-server": "^14.1.1",
+    "nodemon": "^2.0.12"
+  }
+}
