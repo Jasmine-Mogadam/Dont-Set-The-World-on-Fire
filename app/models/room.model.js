@@ -13,7 +13,10 @@ export class Room {
 
   addPlayer(player) {
     if (gameInProgress) {
-      player.websocket.send(ActionTypes.FAILURE, "game already in progress.");
+      player.websocket.send(
+        ActionTypes.SIGN_IN_FAILURE,
+        "game already in progress."
+      );
       return;
     }
 
