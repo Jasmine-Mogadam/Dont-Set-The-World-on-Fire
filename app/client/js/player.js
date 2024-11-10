@@ -1,6 +1,6 @@
-import { ActionTypes } from "../../models/action.model";
-import { MAX_POLLUTION } from "../../models/room.model";
-// import {Player} from "../../models/player.model";
+import { ActionTypes } from "../models/action.model";
+import { MAX_POLLUTION } from "../models/room.model";
+import initLobby from './lobby.js';
 
 const socket = new WebSocket("ws://localhost:3000");
 const playerInstance = new Player(socket);
@@ -18,14 +18,11 @@ socket.on("message", (event) => {
       alert(action.body);
       break;
     case ActionTypes.SIGN_IN_SUCCESS:
-      // TODO: Put these in initLobby() vvv
-      document.getElementById("form").style.display = "none";
-      document.getElementById("lobby").style.display = "block";
-      document.getElementById("roomDisplay").textContent = player.room.code;
-      initLobby(); //TODO: import this from lobby.js
+      initLobby(); 
       break;
     case ActionTypes.GAME_STARTED:
       //TODO: go to game!!
+      // make for the host a start game button, for students make a waiting for host button
       alert("The game has started");
       break;
     case ActionTypes.SEND_SCENARIO:

@@ -1,44 +1,19 @@
+import { ActionTypes } from "../../models/action.model";
+
  
 function initLobby() {
     document.getElementById("form").style.display = "none";
     document.getElementById("lobby").style.display = "block";
-
-
     document.getElementById("roomDisplay").textContent = player.room.code;
-    
-    
     showStartGameButtonIfHost();
 }
 
-// Handle button clicks to either create or join a room
-function handleButtonClick(action) {
-    const roomCode = document.getElementById("roomCode").value.trim();
-    const name = document.getElementById("name").value.trim();
 
-    if ((roomCode && !name) || (!roomCode && name)) {
-        alert("Please enter both room Code and Name.");
-        return;
-    }
 
-    if (roomCode && name) {
-        if (action === "create") {
-            alert("Room created successfully!");
-        } else if (action === "join") {
-            alert("Joined room successfully!");
-        } else {
-            alert("Please enter both Room Code and Name.");
-        }
-
-        // Hide login form and show lobby
-        document.getElementById("form").style.display = "none";
-        document.getElementById("lobby").style.display = "block";
-
-        // Display the room code in the lobby
-        document.getElementById("roomDisplay").textContent = roomCode;
-    } else {
-        alert("Please enter both Room Code and Name.");
-    }
-}
+// export function initLobby() {
+//     document.getElementById("form").style.display = "none";
+//     document.getElementById("lobby").style.display = "block";
+// }
 
 // Add event listeners for the buttons when the document is ready
 document.addEventListener("DOMContentLoaded", function () {
@@ -65,6 +40,7 @@ function startGame() {
     player.sendAction(action);
     alert("Game is starting!");
 }
+
 
 window.startGame = startGame;
 

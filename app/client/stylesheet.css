@@ -81,7 +81,7 @@ body {
 
 
 /* Confirmation Page */
-#confirmation {
+#game_start {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,7 +91,7 @@ body {
     text-align: center;
 }
 
-.confirmation-screen {
+.gamestart {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
     border-radius: 10px;
@@ -99,7 +99,7 @@ body {
     width: 100%
 }
 
-.confirmation-screen h1 {
+.gamestart {
     margin-bottom: 20px;
 }
 

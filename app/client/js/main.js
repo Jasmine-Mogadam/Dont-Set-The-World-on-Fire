@@ -1,35 +1,30 @@
 
-import { SignInForm } from 'app/models/sign-in-form.model.js';
-import {player} from "./player.js";
-import {Action, ActionTypes} from 'app/nodels/action.models.js'
+import { SignInForm } from '../../../models/sign-in-form.model.js';
+import {player} from "../models/player.js";
+import {Action, ActionTypes} from '../models/action.models.js';
 
+// Handle button clicks to either create or join a room
 function handleButtonClick(action) {
-
     const roomCode = document.getElementById("roomCode").value.trim();
     const name = document.getElementById("name").value.trim();
 
-    if ((roomCode && !name) || (!roomCode && name)) {
-        alert("Please enter both Room Code and Name.");
+    const signInForm = new SignInForm(roomCode, name);
+
+    if (!(roomCode && name)) {
+        alert("Please enter both room Code and Name.");
         return;
     }
-
-    if (roomCode && name) {
-        const signInForm = new SignInForm(roomCode, name);
-
+    else {
         if (action === "create") {
-            alert(`Room created successfully with Code: ${signInForm.roomCode} and Name: ${signInForm.name}`);
-        }
+            player.sendAction(ActionTypes.CREATE_ROOM, signInForm);
+            
+        } else if (action === "join") {
+            player.sendAction(ActionTypes.JOIN_ROOM, signInForm);
+            
+        } 
 
-        else if (action === "join") {
-            alert(`Joined room with Code: ${signInForm.roomCode} and Name: ${signInForm.name}`);
-
-        }
-        else {
-            alert("Please enter both Room Code and Name.")
-        }
-    }
+        } 
 }
-
 //function to start the game
 function startGame() {
     const action = new Action(ActionTypes.START_GAME, "game started!");

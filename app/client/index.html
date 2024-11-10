@@ -3,10 +3,7 @@
     <!-- main entry point to all the code -->
 
     <title>Don't Let the World Burn!! </title>
-    <script type="text/javascript" src="js/confirm.js"></script>
-    <script type="text/javascript" src="./js/lobby.js"></script>
-    <script type="text/javascript" src="./js/player.js"></script>
-    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
     
     <link rel="stylesheet" href="stylesheet.css">
   </head>
@@ -51,55 +48,23 @@
           <br> HOWEVER, each decision to make profit will negatively impact the Earth through the Pollution Level.
           <br> When the pollution level gets too high, 
           <br>the world will be set on fire and all presidents will lose their companies and revenue.</p>
-        <button type="button" class="confirm" onclick="showConfirmationScreen()">Confirm</button>
+        
+          <button type="button" id="starrtGameBtn" style="display:none;" onclick="showConfirmationScreen()">Start Game</button>
+
+          <h2 id="waitingMessage" style="display: none;">Waiting on host...</h2>
+ 
       </div>
     </div>
     </div>
 
 
-    <div id="confirmation" style="display: none;">
-      <div class="confirmation-screen">
-        <h1>Confirmation</h1>
-          <div id="scene1" class="scene" style="display:none;">
-            <p>Your great great uncle built a petroleum empire and trusts you to inherit one of his energy investment companies as its president.</p>
-          </div>
-          <div id="scene2" class="scene" style=""></div>
+    <div id="game_start" style="display: none;">
+      <div class="gamestart">
+        <h1>Start Game</h1>
+          
         
       </div>
     </div>
-
-    <!-- <script> 
-      function handleButtonClick(action){
-        const roomCode = document.getElementById("roomCode").value.trim();
-        const name = document.getElementById("name").value.trim();
-        if ((roomCode && !name) || (!roomCode && name)) {
-          alert("Please enter both room Code and Name.");
-          return;
-        }
-
-        if (roomCode && name) {
-          if (action === "create"){
-            alert ("room created successfully!");
-          }
-          else if (action === "join") {
-            alert("Joined room succesfully!");
-          }
-          else {
-            alert("Please enter both Room Code and Name.");
-          }
-        
-          // Hopefully this hides the login form and showes the lobby
-        document.getElementById("form").style.display="none";
-        document.getElementById("lobby").style.display = "block";
-
-        // display the room code in the loby
-        document.getElementById("roomDisplay").textContent = roomCode;
-        } else {
-          alert("Please enter both Room Code and Name.")
-        }
-
-      }
-    </script> -->
 
   </body>
 </html>
