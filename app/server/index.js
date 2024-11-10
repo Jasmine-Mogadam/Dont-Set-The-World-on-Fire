@@ -36,6 +36,7 @@ wss.on("connection", (ws) => {
     let room = new Room(roomCode, host);
     host.room = room;
     rooms.push(room);
+    sendPlayerCreated(host);
   }
 
   function attemptJoinRoom(body) {
@@ -46,6 +47,7 @@ wss.on("connection", (ws) => {
     if (checkIfNameExists(signInForm.name)) return;
     let player = new Player(room, ws, signInForm.name);
     room.addPlayer(player);
+    sendPlayerCreated(player);
   }
 
   function checkIfRequiredFieldsAreEmpty(signInForm) {
@@ -68,7 +70,11 @@ wss.on("connection", (ws) => {
   }
 
   function sendFailure(message) {
-    ws.send(ActionTypes.FAILURE, message);
+    ws.send(new Action(ActionTypes.SIGN_IN_FAILURE, message));
+  }
+
+  function sendPlayerCreated(player) {
+    ws.send(new Action(ActionTypes.SIGN_IN_SUCCESS, player));
   }
 
   function getRoom(roomCode) {
