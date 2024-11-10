@@ -16,21 +16,6 @@ export class Player {
     this.room = room;
     this.name = name;
     this.ws = ws;
-
-    ws.on("message", (event) => {
-      let action = dataToAction(event);
-
-      switch (action.type) {
-        case ActionTypes.SIGN_IN_SUCCESS:
-          this.name = action.body.name;
-          this.roomCode = action.body.roomCode;
-          this.isHost = action.body.isHost;
-          break;
-        case ActionTypes.ANSWER_SCENARIO:
-          let answer = new Option(action.body);
-          handleInventory(answer);
-      }
-    });
   }
 
   sendAction(action) {

@@ -1,7 +1,7 @@
 import { WebSocketServer } from "ws";
 import { Room } from "../models/room.model.js";
-import { Action, ActionTypes } from "../models/action.model";
-import { SignInForm, SignInForm } from "../models/sign-in-form.model";
+import { Action, ActionTypes, dataToAction } from "../models/action.model.js";
+import { dataToSignInForm, SignInForm } from "../models/sign-in-form.model.js";
 import { Player } from "../models/player.model.js";
 
 const wss = new WebSocketServer({ port: 3000 });
@@ -13,8 +13,8 @@ wss.on("connection", (ws) => {
     console.log("client disconnected!");
   });
 
-  ws.onmessage((event) => {
-    let action = new Action(event);
+  ws.on("message", (event) => {
+    let action = dataToAction(event);
     switch (action.type) {
       case ActionTypes.CREATE_ROOM:
         attemptCreateRoom(action.body);
@@ -26,20 +26,23 @@ wss.on("connection", (ws) => {
   });
 
   function attemptCreateRoom(body) {
-    let signInForm = new SignInForm(body);
+    let signInForm = dataToSignInForm(body);
     if (checkIfRequiredFieldsAreEmpty(signInForm)) return;
     if (roomCodeExists(signInForm.roomCode)) {
       sendFailure("Room code already exists, choose a different one.");
     }
-    let host = new Player(ws, signInForm.name);
-    let room = new Room(roomCode, host);
+    let host = new Player(ws, signInForm.name, null, true);
+    let room = new Room(signInForm.roomCode, host);
     host.room = room;
     rooms.push(room);
     sendPlayerCreated(host);
   }
 
   function attemptJoinRoom(body) {
-    let signInForm = new SignInForm(body);
+    console.log(typeof body);
+    let signInForm = dataToSignInForm(body);
+    console.log(signInForm.roomCode);
+    console.log(signInForm.name);
     if (checkIfRequiredFieldsAreEmpty(signInForm)) return;
     let room = getRoom(signInForm.roomCode);
     if (room == null) return;

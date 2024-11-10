@@ -9,7 +9,8 @@ export class SignInForm {
 }
 
 export function dataToSignInForm(data) {
-  let roomCode = data.roomCode;
-  let name = data.name;
+  let parsedJson = JSON.parse(data);
+  let roomCode = parsedJson.roomCode;
+  let name = parsedJson.name;
   return new SignInForm(roomCode, name);
 }

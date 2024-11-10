@@ -1,4 +1,3 @@
-import EventEmitter from "events";
 import { Action, ActionTypes } from "./action.model.js";
 
 export const MAX_POLLUTION = 1000;
@@ -10,12 +9,9 @@ export class Room {
   gameInProgress = false;
   pollution = 0;
   currentRound = 0;
-  roomClose = new EventEmitter();
 
   removeDisconnectedPlayer = (player) => {
     //TODO: remove player from room if they disconnect
-
-    if (this.players.length === 0) roomClose.emit("close");
   };
 
   constructor(roomCode, host) {
@@ -96,7 +92,6 @@ export class Room {
   }
 
   cleanupAfterGame() {
-    roomClose.emit("close");
     players = [];
   }
 
