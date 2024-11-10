@@ -1,6 +1,4 @@
  
-import {Action, ActionTypes } from 'app/modeks/action.modle'
-
 function initLobby() {
     document.getElementById("form").style.display = "none";
     document.getElementById("lobby").style.display = "block";
@@ -63,7 +61,7 @@ function showStartGameButtonIfHost() {
 
 //function to start the game
 function startGame() {
-    const action = new Action(ActionTypes.START_GAME, "game started!");
+    const action = new action(ActionTypes.START_GAME, "game started!");
     player.sendAction(action);
     alert("Game is starting!");
 }

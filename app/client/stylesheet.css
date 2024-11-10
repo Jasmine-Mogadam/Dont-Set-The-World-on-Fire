@@ -58,14 +58,63 @@ body {
 }
 
 
+/* Lobby */
+
+#lobby {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    border-radius: 20px;
+}
+
+#lobby h1 {
+    font-size: 2em;
+    color: #444; /* Heading color */
+}
+
+#lobby p {
+    font-size: 1.2em;
+    color: #676; /* Paragraph text color */
+}
 
 
+/* Confirmation Page */
+#confirmation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
 
+.confirmation-screen {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%
+}
 
+.confirmation-screen h1 {
+    margin-bottom: 20px;
+}
 
-
-
-
+.confirm {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin: 5px 0;
+}
 
 
 

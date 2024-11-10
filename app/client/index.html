@@ -3,9 +3,11 @@
     <!-- main entry point to all the code -->
 
     <title>Don't Let the World Burn!! </title>
-    <script src="./js/lobby.js"></script>
-    <script src="./js/player.js"></script>
+    <script type="text/javascript" src="js/confirm.js"></script>
+    <script type="text/javascript" src="./js/lobby.js"></script>
+    <script type="text/javascript" src="./js/player.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
+    
     <link rel="stylesheet" href="stylesheet.css">
   </head>
   <body>
@@ -28,12 +30,42 @@
     </div>
 
     <div id="lobby" style="display:none;">
-      <h1>Welcome to the Lobby!</h1>
-      <p>You are in room <span id="roomDisplay"></span></p>
-      <p>Chat with others and get ready to play!</p>
+          
+        <h1>Welcome to the Lobby!</h1>
+        <p>You are in room <span id="roomDisplay"></span></p>
+        <p>Welcome students! 
+          <br>
+          <br>
+          On this beautiful Earth, we extract, refine, and supply consumable fuels through 
+          <br>
+          companies in the energy sectorto power our society. You are the president of an 
+          <br>
+          energy investment company for 5 years. Each year, you make an investment that increases 
+          <br>
+          your revenue and pollution level of the world. 
+          <br>
+          Everyone loses when the pollution level sets the world on fire.
+          <br>
+        </p>
+        <p>Your company's goal is to reach $1,000,000 in revenue.
+          <br> HOWEVER, each decision to make profit will negatively impact the Earth through the Pollution Level.
+          <br> When the pollution level gets too high, 
+          <br>the world will be set on fire and all presidents will lose their companies and revenue.</p>
+        <button type="button" class="confirm" onclick="showConfirmationScreen()">Confirm</button>
+      </div>
+    </div>
+    </div>
 
-      <button id="startGameBtn" style="display: none;" onclick="startGame()">Start Game</button>
 
+    <div id="confirmation" style="display: none;">
+      <div class="confirmation-screen">
+        <h1>Confirmation</h1>
+          <div id="scene1" class="scene" style="display:none;">
+            <p>Your great great uncle built a petroleum empire and trusts you to inherit one of his energy investment companies as its president.</p>
+          </div>
+          <div id="scene2" class="scene" style=""></div>
+        
+      </div>
     </div>
 
     <!-- <script> 
