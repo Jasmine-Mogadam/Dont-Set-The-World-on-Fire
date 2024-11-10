@@ -1,9 +1,69 @@
 <html>
   <head>
     <!-- main entry point to all the code -->
+
+    <title>Don't Let the World Burn!! </title>
     <script type="text/javascript" src="./js/main.js"></script>
+    <link rel="stylesheet" href="stylesheet.css">
   </head>
   <body>
-    This works yaya
+    <div id="form" class="wrapper">
+      <form id="loginForm">
+        <h1>Login</h1>
+
+        <div class="input-box">
+          <input type="text" id="roomCode" placeholder="Room Code" required>
+        </div>
+
+        <div class="input-box">
+          <input type="text" id="name" placeholder="Name" required>
+        </div>
+        
+        <button type="button" class="create" onclick="handleButtonClick('create')"> Create Room </button>
+        <button type="button" class="join" onclick="handleButtonClick('join')"> Join Room </button>
+
+      </form>
+    </div>
+
+    <div id="lobby" style="display:none;">
+      <h1>Welcome to the Lobby!</h1>
+      <p>You are in room <span id="roomDisplay"></span></p>
+      <p>Chat with others and get ready to play!</p>
+
+    </div>
+
+    <script> 
+      function handleButtonClick(action){
+        const roomCode = document.getElementById("roomCode").value.trim();
+        const name = document.getElementById("name").value.trim();
+        if ((roomCode && !name) || (!roomCode && name)) {
+          alert("Please enter both room Code and Name.");
+          return;
+        }
+
+        if (roomCode && name) {
+          if (action === "create"){
+            alert ("room created successfully!");
+          }
+          else if (action === "join") {
+            alert("Joined room succesfully!");
+          }
+          else {
+            alert("Please enter both Room Code and Name.");
+          }
+        
+          // Hopefully this hides the login form and showes the lobby
+        document.getElementById("form").style.display="none";
+        document.getElementById("lobby").style.display = "block";
+
+        // display the room code in the loby
+        document.getElementById("roomDisplay").textContent = roomCode;
+        } else {
+          alert("Please enter both Room Code and Name.")
+        }
+
+      }
+    </script>
+
   </body>
 </html>
