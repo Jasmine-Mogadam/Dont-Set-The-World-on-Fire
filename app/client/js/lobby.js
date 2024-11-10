@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function showStartGameButtonIfHost() {
-    if (player.room && player.room.host && player.room.host.name === player.name) {
+    if (player.isHost) {
         document.getElementById("startGameBtn").style.display = "block";
     } else {
         document.getElementById("startGameBtn").style.display = "none";

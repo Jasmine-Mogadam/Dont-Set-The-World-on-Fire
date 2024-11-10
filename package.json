@@ -15,7 +15,8 @@
     "dev": "concurrently \"cd .\\app\\client && http-server\" \"node .\\app\\server\\index.js\""
   },
   "dependencies": {
-    "@types/node": "^14.14.35"
+    "@types/node": "^14.14.35",
+    "dont-set-the-world-on-fire": "file:"
   },
   "devDependencies": {
     "concurrently": "^9.1.0",

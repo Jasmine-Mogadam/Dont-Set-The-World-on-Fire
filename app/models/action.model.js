@@ -17,8 +17,11 @@ export class Action{
 export const ActionTypes = Object.freeze({
     CREATE_ROOM: 0,
     JOIN_ROOM: 1,
-    ANSWER_SCENARIO: 2,
-    SIGN_IN_FAILURE: 3,
-    SIGN_IN_SUCCESS: 4,
-    GAME_START: 5
+    SIGN_IN_FAILURE: 2,
+    SIGN_IN_SUCCESS: 3,
+    GAME_START: 4,
+    GAME_STARTED: 5,
+    SEND_SCENARIO: 6,
+    ANSWER_SCENARIO: 7,
+    WARMING_CHANGED: 8,
 });

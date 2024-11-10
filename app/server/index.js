@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import { WebSocketServer } from "ws";
 import { Room } from "../models/room.model.js";
 import { Action, ActionTypes } from "../models/action.model";
@@ -45,7 +44,7 @@ wss.on("connection", (ws) => {
     let room = getRoom(signInForm.roomCode);
     if (room == null) return;
     if (checkIfNameExists(signInForm.name)) return;
-    let player = new Player(room, ws, signInForm.name);
+    let player = new Player(true, room, ws, signInForm.name);
     room.addPlayer(player);
     sendPlayerCreated(player);
   }
@@ -74,7 +73,16 @@ wss.on("connection", (ws) => {
   }
 
   function sendPlayerCreated(player) {
-    ws.send(new Action(ActionTypes.SIGN_IN_SUCCESS, player));
+    // SECURITY: don't send client room object
+    // (don't want to give access to other players' sockets)
+    let sanitizedPlayer = new Player(
+      player.isHost,
+      null,
+      player.ws,
+      player.name
+    );
+
+    ws.send(new Action(ActionTypes.SIGN_IN_SUCCESS, sanitizedPlayer));
   }
 
   function getRoom(roomCode) {
@@ -86,11 +94,3 @@ wss.on("connection", (ws) => {
     }
   }
 });
-=======
-
-// JavaScript for the main 
-
- 
-
-
->>>>>>> Stashed changes
