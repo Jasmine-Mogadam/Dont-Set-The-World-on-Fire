@@ -3,6 +3,8 @@
     <!-- main entry point to all the code -->
 
     <title>Don't Let the World Burn!! </title>
+    <script src="./js/lobby.js"></script>
+    <script src="./js/player.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
     <link rel="stylesheet" href="stylesheet.css">
   </head>
@@ -19,8 +21,8 @@
           <input type="text" id="name" placeholder="Name" required>
         </div>
         
-        <button type="button" class="create" onclick="handleButtonClick('create')"> Create Room </button>
-        <button type="button" class="join" onclick="handleButtonClick('join')"> Join Room </button>
+        <button type="button" class="create" > Create Room </button>
+        <button type="button" class="join" > Join Room </button>
 
       </form>
     </div>
@@ -30,9 +32,11 @@
       <p>You are in room <span id="roomDisplay"></span></p>
       <p>Chat with others and get ready to play!</p>
 
+      <button id="startGameBtn" style="display: none;" onclick="startGame()">Start Game</button>
+
     </div>
 
-    <script> 
+    <!-- <script> 
       function handleButtonClick(action){
         const roomCode = document.getElementById("roomCode").value.trim();
         const name = document.getElementById("name").value.trim();
@@ -63,7 +67,7 @@
         }
 
       }
-    </script>
+    </script> -->
 
   </body>
 </html>
